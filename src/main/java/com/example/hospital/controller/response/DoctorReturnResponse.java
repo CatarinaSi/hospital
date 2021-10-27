@@ -1,5 +1,4 @@
-package com.example.hospital.controller.request;
-
+package com.example.hospital.controller.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DoctorCreationRequest {
+public class DoctorReturnResponse {
+    private Long id;
     private String name;
     private String specialty;
 }

@@ -27,6 +27,9 @@ public class Patient {
     @JoinColumn(name = "id_doctor")
     private Doctor doctor;
 
-    @ManyToMany(mappedBy = "treatment_patient")
-    private List<Patient> patient;
+    @ManyToMany
+    @JoinTable(name = "patient_treatment",
+            joinColumns = @JoinColumn(name = "patientId"),
+            inverseJoinColumns = @JoinColumn(name = "treatmentId"))
+    private List<Treatment> patient_treatment;
 }

@@ -1,6 +1,7 @@
 package com.example.hospital.model;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,11 +17,9 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String patientname;
+    @Length(min = 10, max = 100)
     private String process;
 
-    @ManyToMany
-    @JoinTable(name = "treatment_patient",
-            joinColumns = @JoinColumn(name = "treatmentId"),
-            inverseJoinColumns = @JoinColumn(name = "patientId"))
-    private List<Patient> treatment_patient;
+    @ManyToMany(mappedBy = "patient_treatment")
+    private List<Patient> patients;
 }
